@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://defkbknklnpk5"]
+
+[ext_resource type="Texture2D" uid="uid://bm6titlngt01w" path="res://Assets/Textures/GarbageHoleLarge.png" id="1_ff8fp"]
+[ext_resource type="Script" uid="uid://duk2u0ige11cj" path="res://Nodes/Track/garbage_hole.gd" id="1_psrmh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ff8fp"]
+radius = 68.0
+height = 550.0
+
+[node name="GarbageHole" type="Area2D"]
+collision_layer = 8
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_psrmh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_ff8fp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ff8fp")

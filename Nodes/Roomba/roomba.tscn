@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxear30ds3sed"]
+[gd_scene load_steps=6 format=3 uid="uid://dxear30ds3sed"]
 
 [ext_resource type="Script" uid="uid://ctm0xkh01ls01" path="res://Nodes/Roomba/roomba.gd" id="1_2wlkw"]
 [ext_resource type="Texture2D" uid="uid://g78evs0wtptf" path="res://Assets/Textures/Roomba.png" id="1_xokpk"]
+[ext_resource type="PackedScene" uid="uid://pb5k6xmdhuit" path="res://Nodes/Roomba/garbage_hole_direction_arrow.tscn" id="3_j4ntv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2wlkw"]
 
@@ -27,3 +28,6 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_j4ntv")
+
+[node name="GarbageHoleDirectionArrow" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_j4ntv")]
+camera = NodePath("../Camera2D")

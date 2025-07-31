@@ -37,4 +37,4 @@ func _on_area_entered(area:Area2D) -> void:
 		tripped_timer.start()
 
 func _on_tripped_timer_timeout() -> void:
-	current_speed_multiplier = min_movespeed_multiplier
+	current_speed_multiplier = 1

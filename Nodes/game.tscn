@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnfgo8c70n73m"]
+[gd_scene load_steps=6 format=3 uid="uid://cnfgo8c70n73m"]
 
 [ext_resource type="Script" uid="uid://c08gg3w3l4tq0" path="res://Nodes/game.gd" id="1_bfc22"]
 [ext_resource type="PackedScene" uid="uid://bya7dhoi8qfku" path="res://Nodes/UI/GameUI.tscn" id="2_1sokt"]
 [ext_resource type="PackedScene" uid="uid://bc83u0km2bsro" path="res://Nodes/Track/track.tscn" id="2_s24rg"]
 [ext_resource type="PackedScene" uid="uid://dxear30ds3sed" path="res://Nodes/Roomba/roomba.tscn" id="4_wi60h"]
+[ext_resource type="PackedScene" uid="uid://defkbknklnpk5" path="res://Nodes/Track/garbage_hole.tscn" id="5_y4gxr"]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" node_paths=PackedStringArray("Roomba", "GarbageHole")]
 script = ExtResource("1_bfc22")
+Roomba = NodePath("Roomba")
+GarbageHole = NodePath("GarbageHole")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_1sokt")]
 
@@ -14,3 +17,5 @@ script = ExtResource("1_bfc22")
 
 [node name="Roomba" parent="." instance=ExtResource("4_wi60h")]
 position = Vector2(-572, 579)
+
+[node name="GarbageHole" parent="." instance=ExtResource("5_y4gxr")]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://pb5k6xmdhuit"]
+
+[ext_resource type="Script" uid="uid://cnpqknxajiwle" path="res://Nodes/Roomba/garbage_hole_direction_arrow.gd" id="1_bvvgh"]
+[ext_resource type="Texture2D" uid="uid://dxjsqfbryodin" path="res://Assets/Textures/DirectionArrow.png" id="2_i2con"]
+
+[node name="GarbageHoleDirectionArrow" type="Node2D"]
+script = ExtResource("1_bvvgh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i2con")

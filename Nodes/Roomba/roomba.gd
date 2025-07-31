@@ -5,10 +5,7 @@ extends CharacterBody2D
 @export var collision_area:Area2D
 var movement:Vector2 = Vector2.ZERO
 
-var garbage_capacity:int = 100
-
 func _ready() -> void:
-	GameData.Roomba = self
 	collision_area.area_entered.connect(_on_area_entered)
 
 func _process(_delta: float) -> void:
