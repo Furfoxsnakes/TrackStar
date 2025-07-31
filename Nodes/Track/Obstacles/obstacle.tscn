@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgd7mmtnkskg0"]
+
+[ext_resource type="Script" uid="uid://c4la7baesiu4r" path="res://Nodes/Track/Obstacles/obstacle.gd" id="1_dk8em"]
+[ext_resource type="Texture2D" uid="uid://bxq5oshy8sfjh" path="res://Assets/Textures/Spill.png" id="1_jrvbo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dk8em"]
+radius = 8.0
+
+[node name="Obstacle" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_dk8em")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dk8em")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jrvbo")

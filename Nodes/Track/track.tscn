@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://bc83u0km2bsro"]
+
+[ext_resource type="Script" uid="uid://chcu1ivwyp8q7" path="res://Nodes/Track/track.gd" id="1_frhms"]
+[ext_resource type="Texture2D" uid="uid://bxf84v7auudj3" path="res://Assets/Textures/Track.png" id="1_olmpi"]
+[ext_resource type="PackedScene" uid="uid://d0yds2jivp5ty" path="res://Nodes/Runner/runner.tscn" id="2_cbwuk"]
+[ext_resource type="Script" uid="uid://cc1i474helqrj" path="res://Nodes/Track/Lane.gd" id="2_ya8b8"]
+[ext_resource type="PackedScene" uid="uid://cgd7mmtnkskg0" path="res://Nodes/Track/Obstacles/obstacle.tscn" id="4_frhms"]
+
+[sub_resource type="Curve2D" id="Curve2D_cbwuk"]
+_data = {
+"points": PackedVector2Array(0, 0, 7.4936, -0.049907, -640, 584, 0, 0, 78.4619, -3.95132, 638, 584, -173.293, 193.615, 0, 0, 1079, 383, 2.23817, 231.204, 8.04059, -193.133, 1222, 0, 0, 0, 0, 0, 1096.71, -361.052, 116.485, 67.1612, -132.348, -78.1916, 930, -505, 0, 0, 0, 0, 638, -584, 0, 0, -319.669, 12.2824, -640, -584, 15.0267, -13.8872, -5.52441, 8.88095, -1096, -360, -0.636854, -216.626, -0.322178, 213.422, -1224, 0, -14.4193, -15.6916, 203.489, 216.321, -1080, 384, 0, 0, 0, 0, -640, 584)
+}
+point_count = 12
+
+[sub_resource type="Curve2D" id="Curve2D_uf83o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -514, 600, 0, 0, 277.552, 4.96737, 638, 600, 0, 0, 172.616, -204.904, 1086, 400, 0, 0, 9.93474, -258.303, 1238, 0, 0, 0, -216.081, -182.551, 1046, -440, 8.92279, 5.65836, -19.3201, 1.3979, 638, -600, 0, 0, -274.746, 2.48851, -642, -600, 0, 0, -178.14, 178.879, -1073, -414, 0, 0, -4.34645, 220.427, -1240, 0, 0, 0, 192.524, 229.096, -1099, 387, -6.08087, 0.270261, 0, 0, -642, 600, 0, 0, 0, 0, -514, 600)
+}
+point_count = 12
+
+[sub_resource type="Curve2D" id="Curve2D_h6w1i"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -386, 616, 0, 0, 292.537, -0.957569, 638, 616, 0, 0, 177.37, -206.977, 1094, 416, 0, 0, 3.00526, -273.479, 1254, 0, 0, 0, -196.627, -169.253, 1054, -456, 0, 0, 0, 0, 638, -616, 0, 0, -288.001, 0, -642, -616, 0, 0, -155.044, 161.874, -1098, -408, 0, 0, 3.75657, 247.934, -1258, 0, 0, 0, 203.118, 242.309, -1114, 392, 0, 0, 0, 0, -642, 616, 0, 0, 0, 0, -386, 616)
+}
+point_count = 12
+
+[sub_resource type="Curve2D" id="Curve2D_7g1yp"]
+_data = {
+"points": PackedVector2Array(0, 0, 11.7961, -0.551407, -258, 632, 0, 0, 304.292, -1.91178, 638, 632, 0, 0, 159.746, -168.213, 1110, 424, 0, 0, -0.564474, -319.492, 1270, 0, 0, 0, -173.293, -148.457, 1038, -488, 0, 0, 0, 0, 638, -632, 0, 0, -286.435, 1.39952, -642, -632, 0, 0, -191.865, 170.753, -1082, -448, 0, 0, -1.86276, 266.996, -1274, 0, 0, 0, 239.676, 214.839, -1090, 448, -14.0847, -3.26331, 0, 0, -642, 632, 0, 0, 0, 0, -258, 632)
+}
+point_count = 12
+
+[node name="Track" type="Node2D"]
+script = ExtResource("1_frhms")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_olmpi")
+
+[node name="Lane 1" type="Path2D" parent="." node_paths=PackedStringArray("obstacle_spawn_timer")]
+position = Vector2(2, 0)
+curve = SubResource("Curve2D_cbwuk")
+script = ExtResource("2_ya8b8")
+obstacle_spawn_timer = NodePath("ObstacleSpawnTimer")
+obstacle_scene = ExtResource("4_frhms")
+
+[node name="Runner2" parent="Lane 1" instance=ExtResource("2_cbwuk")]
+position = Vector2(-640, 584)
+rotation = -0.00666249
+
+[node name="ObstacleSpawnTimer" type="Timer" parent="Lane 1"]
+wait_time = 5.0
+autostart = true
+
+[node name="Lane 2" type="Path2D" parent="." node_paths=PackedStringArray("obstacle_spawn_timer")]
+position = Vector2(2, 0)
+curve = SubResource("Curve2D_uf83o")
+script = ExtResource("2_ya8b8")
+obstacle_spawn_timer = NodePath("ObstacleSpawnTimer")
+obstacle_scene = ExtResource("4_frhms")
+
+[node name="ObstacleSpawnTimer" type="Timer" parent="Lane 2"]
+wait_time = 5.0
+autostart = true
+
+[node name="Runner3" parent="Lane 2" instance=ExtResource("2_cbwuk")]
+position = Vector2(-514, 600)
+rotation = -0.00666249
+
+[node name="Lane 3" type="Path2D" parent="." node_paths=PackedStringArray("obstacle_spawn_timer")]
+position = Vector2(2, 0)
+curve = SubResource("Curve2D_h6w1i")
+script = ExtResource("2_ya8b8")
+obstacle_spawn_timer = NodePath("ObstacleSpawnTimer")
+obstacle_scene = ExtResource("4_frhms")
+
+[node name="Runner4" parent="Lane 3" instance=ExtResource("2_cbwuk")]
+position = Vector2(-386, 616)
+rotation = -0.00666249
+
+[node name="ObstacleSpawnTimer" type="Timer" parent="Lane 3"]
+wait_time = 5.0
+autostart = true
+
+[node name="Lane 4" type="Path2D" parent="." node_paths=PackedStringArray("obstacle_spawn_timer")]
+position = Vector2(2, 0)
+curve = SubResource("Curve2D_7g1yp")
+script = ExtResource("2_ya8b8")
+obstacle_spawn_timer = NodePath("ObstacleSpawnTimer")
+obstacle_scene = ExtResource("4_frhms")
+
+[node name="ObstacleSpawnTimer" type="Timer" parent="Lane 4"]
+wait_time = 5.0
+autostart = true
+
+[node name="Runner" parent="Lane 4" instance=ExtResource("2_cbwuk")]
+position = Vector2(-258, 632)
+rotation = -0.00666249

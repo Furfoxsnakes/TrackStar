@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnfgo8c70n73m"]
+
+[ext_resource type="Script" uid="uid://c08gg3w3l4tq0" path="res://Nodes/game.gd" id="1_bfc22"]
+[ext_resource type="PackedScene" uid="uid://bya7dhoi8qfku" path="res://Nodes/UI/GameUI.tscn" id="2_1sokt"]
+[ext_resource type="PackedScene" uid="uid://bc83u0km2bsro" path="res://Nodes/Track/track.tscn" id="2_s24rg"]
+[ext_resource type="PackedScene" uid="uid://dxear30ds3sed" path="res://Nodes/Roomba/roomba.tscn" id="4_wi60h"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_bfc22")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_1sokt")]
+
+[node name="Track" parent="." instance=ExtResource("2_s24rg")]
+
+[node name="Roomba" parent="." instance=ExtResource("4_wi60h")]
+position = Vector2(-572, 579)
