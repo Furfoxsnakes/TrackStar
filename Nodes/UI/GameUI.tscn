@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c37kgg4tfpck3" path="res://Nodes/UI/GameUI.gd" id="1_arrpt"]
 
-[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("speed_up_button", "slow_down_button", "garbage_collected_progress_bar")]
+[node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("speed_up_button", "slow_down_button", "garbage_collected_progress_bar", "experience_progress_bar")]
 script = ExtResource("1_arrpt")
 speed_up_button = NodePath("HBoxContainer/SpeedUpButton")
 slow_down_button = NodePath("HBoxContainer/SlowDownButton")
-garbage_collected_progress_bar = NodePath("CenterContainer/ProgressBar")
+garbage_collected_progress_bar = NodePath("CenterContainer/HBoxContainer/HBoxContainer/ProgressBar")
+experience_progress_bar = NodePath("CenterContainer/HBoxContainer/HBoxContainer2/ProgressBar")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 visible = false
@@ -28,7 +29,31 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "ROOMBA CAPACITY"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "XP"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 max_value = 1.0

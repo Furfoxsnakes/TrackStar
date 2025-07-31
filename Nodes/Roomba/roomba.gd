@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	movement = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = movement.normalized() * move_speed
+	velocity = movement.normalized() * move_speed * get_movement_speed_bonus()
 	move_and_slide()
 
 func _on_area_entered(area: Area2D) -> void:
@@ -21,3 +21,13 @@ func _on_area_entered(area: Area2D) -> void:
 		GameData.garbage_collected += 5
 		GameEvents.EmitGarbageCollected()
 		area.queue_free()
+
+
+func get_movement_speed_bonus() -> float:
+	var speed_bonus_multiplier = 1.0
+
+	for powerup in PowerupManager.powerups:
+		if powerup.type == Powerup.Type.Speed:
+			speed_bonus_multiplier += 0.15
+
+	return speed_bonus_multiplier

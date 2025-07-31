@@ -6,5 +6,6 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body is Roomba:
+		GameEvents.EmitGarbageDroppedInHole()
 		GameData.garbage_collected = 0
 		GameEvents.EmitGarbageCollected()

@@ -18,7 +18,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameEvents="*res://Nodes/game_events.gd"
-GameData="*res://Nodes/game_data.gd"
+GameData="*res://Nodes/game_data.tscn"
+ExperienceManager="*res://Nodes/experience_manager.tscn"
+PowerupManager="*res://Nodes/powerup_manager.tscn"
 
 [display]
 

@@ -13,6 +13,7 @@ func _ready() -> void:
 	GameEvents.SpeedUp.connect(_on_speed_up)
 	GameEvents.SlowDown.connect(_on_slow_down)
 	collision_area.area_entered.connect(_on_area_entered)
+	collision_area.body_entered.connect(_on_body_entered)
 	tripped_timer.timeout.connect(_on_tripped_timer_timeout)
 
 func _process(delta: float) -> void:
@@ -33,6 +34,11 @@ func _on_slow_down() -> void:
 
 func _on_area_entered(area:Area2D) -> void:
 	if area is Obstacle:
+		current_speed_multiplier = 0.25
+		tripped_timer.start()
+
+func _on_body_entered(body: Node) -> void:
+	if body is Roomba:
 		current_speed_multiplier = 0.25
 		tripped_timer.start()
 

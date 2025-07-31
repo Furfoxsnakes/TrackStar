@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bc83u0km2bsro"]
+[gd_scene load_steps=9 format=3 uid="uid://bc83u0km2bsro"]
 
 [ext_resource type="Script" uid="uid://chcu1ivwyp8q7" path="res://Nodes/Track/track.gd" id="1_frhms"]
 [ext_resource type="Texture2D" uid="uid://bxf84v7auudj3" path="res://Assets/Textures/Track.png" id="1_olmpi"]
 [ext_resource type="PackedScene" uid="uid://d0yds2jivp5ty" path="res://Nodes/Runner/runner.tscn" id="2_cbwuk"]
-[ext_resource type="Script" uid="uid://cc1i474helqrj" path="res://Nodes/Track/Lane.gd" id="2_ya8b8"]
 [ext_resource type="PackedScene" uid="uid://cgd7mmtnkskg0" path="res://Nodes/Track/Obstacles/obstacle.tscn" id="4_frhms"]
 
 [sub_resource type="Curve2D" id="Curve2D_cbwuk"]
@@ -30,68 +29,47 @@ _data = {
 }
 point_count = 12
 
-[node name="Track" type="Node2D"]
+[node name="Track" type="Node2D" node_paths=PackedStringArray("lanes", "obstacle_spawn_timer")]
 script = ExtResource("1_frhms")
+lanes = [NodePath("Lane 1"), NodePath("Lane 2"), NodePath("Lane 3"), NodePath("Lane 4")]
+obstacle_spawn_timer = NodePath("ObstacleSpawnTimer")
+obstacle_scene = ExtResource("4_frhms")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_olmpi")
 
-[node name="Lane 1" type="Path2D" parent="." node_paths=PackedStringArray("obstacle_spawn_timer")]
+[node name="Lane 1" type="Path2D" parent="."]
 position = Vector2(2, 0)
 curve = SubResource("Curve2D_cbwuk")
-script = ExtResource("2_ya8b8")
-obstacle_spawn_timer = NodePath("ObstacleSpawnTimer")
-obstacle_scene = ExtResource("4_frhms")
 
 [node name="Runner2" parent="Lane 1" instance=ExtResource("2_cbwuk")]
 position = Vector2(-640, 584)
 rotation = -0.00666249
 
-[node name="ObstacleSpawnTimer" type="Timer" parent="Lane 1"]
-wait_time = 5.0
-autostart = true
-
-[node name="Lane 2" type="Path2D" parent="." node_paths=PackedStringArray("obstacle_spawn_timer")]
+[node name="Lane 2" type="Path2D" parent="."]
 position = Vector2(2, 0)
 curve = SubResource("Curve2D_uf83o")
-script = ExtResource("2_ya8b8")
-obstacle_spawn_timer = NodePath("ObstacleSpawnTimer")
-obstacle_scene = ExtResource("4_frhms")
-
-[node name="ObstacleSpawnTimer" type="Timer" parent="Lane 2"]
-wait_time = 5.0
-autostart = true
 
 [node name="Runner3" parent="Lane 2" instance=ExtResource("2_cbwuk")]
 position = Vector2(-514, 600)
 rotation = -0.00666249
 
-[node name="Lane 3" type="Path2D" parent="." node_paths=PackedStringArray("obstacle_spawn_timer")]
+[node name="Lane 3" type="Path2D" parent="."]
 position = Vector2(2, 0)
 curve = SubResource("Curve2D_h6w1i")
-script = ExtResource("2_ya8b8")
-obstacle_spawn_timer = NodePath("ObstacleSpawnTimer")
-obstacle_scene = ExtResource("4_frhms")
 
 [node name="Runner4" parent="Lane 3" instance=ExtResource("2_cbwuk")]
 position = Vector2(-386, 616)
 rotation = -0.00666249
 
-[node name="ObstacleSpawnTimer" type="Timer" parent="Lane 3"]
-wait_time = 5.0
-autostart = true
-
-[node name="Lane 4" type="Path2D" parent="." node_paths=PackedStringArray("obstacle_spawn_timer")]
+[node name="Lane 4" type="Path2D" parent="."]
 position = Vector2(2, 0)
 curve = SubResource("Curve2D_7g1yp")
-script = ExtResource("2_ya8b8")
-obstacle_spawn_timer = NodePath("ObstacleSpawnTimer")
-obstacle_scene = ExtResource("4_frhms")
-
-[node name="ObstacleSpawnTimer" type="Timer" parent="Lane 4"]
-wait_time = 5.0
-autostart = true
 
 [node name="Runner" parent="Lane 4" instance=ExtResource("2_cbwuk")]
 position = Vector2(-258, 632)
 rotation = -0.00666249
+
+[node name="ObstacleSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true

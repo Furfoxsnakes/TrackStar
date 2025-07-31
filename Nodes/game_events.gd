@@ -4,6 +4,7 @@ signal SpeedUp()
 signal SlowDown()
 signal GarbageCollected()
 signal GarbageDroppedInHole()
+signal ExperienceGained()
 
 func EmitSpeedUp() -> void:
     emit_signal("SpeedUp")
@@ -16,3 +17,6 @@ func EmitGarbageCollected() -> void:
 
 func EmitGarbageDroppedInHole() -> void:
     emit_signal("GarbageDroppedInHole")
+
+func EmitExperienceGained() -> void:
+    emit_signal("ExperienceGained")

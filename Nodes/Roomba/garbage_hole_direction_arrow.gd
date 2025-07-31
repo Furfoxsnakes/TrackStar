@@ -11,7 +11,7 @@ func _ready() -> void:
 	screen_size = camera.get_viewport().get_visible_rect().size
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	point_to_garbage_hole(Game.Instance.GarbageHole)
 
 

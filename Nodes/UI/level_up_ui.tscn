@@ -1,0 +1,147 @@
+[gd_scene load_steps=3 format=3 uid="uid://cal08l8stndh2"]
+
+[ext_resource type="Script" uid="uid://chqnjy4aw4ydy" path="res://Nodes/UI/level_up_ui.gd" id="1_v5ilg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v5ilg"]
+font_size = 36
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="LevelUpUI" type="CanvasLayer"]
+script = ExtResource("1_v5ilg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.545098)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "LEVEL UP"
+label_settings = SubResource("LabelSettings_v5ilg")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+
+[node name="Speed Powerup" type="Panel" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/Speed Powerup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/Speed Powerup/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/Speed Powerup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SPEED"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/Speed Powerup/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Increase the speed of the Roomba by 15%"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/Speed Powerup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SELECT"
+
+[node name="Capacity Powerup" type="Panel" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/Capacity Powerup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/Capacity Powerup/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/Capacity Powerup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CAPACITY"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/Capacity Powerup/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Increases the garbage capacity of the Roomba by 10%"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/Capacity Powerup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SELECT"
+
+[node name="Cleaning Area Powerup" type="Panel" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/Cleaning Area Powerup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/Cleaning Area Powerup/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/Cleaning Area Powerup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CLEANING AREA"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/Cleaning Area Powerup/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Increase the cleaning area of the roomba by 15%"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/Cleaning Area Powerup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SELECT"
