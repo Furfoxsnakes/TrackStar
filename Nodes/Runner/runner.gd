@@ -7,6 +7,7 @@ extends PathFollow2D
 @export var collision_area: Area2D
 @export var tripped_timer:Timer
 
+var laps_completed: int = 0
 var current_speed_multiplier: float = 1.0
 
 func _ready() -> void:
@@ -16,9 +17,16 @@ func _ready() -> void:
 	collision_area.body_entered.connect(_on_body_entered)
 	tripped_timer.timeout.connect(_on_tripped_timer_timeout)
 
+	GameData.Runners.append(self)
+
 func _process(delta: float) -> void:
 	progress += base_speed * current_speed_multiplier * delta
 	
+	if progress >= 1:
+		# progress = 0  # Reset progress when it reaches the end of the path
+		laps_completed += 1
+		GameEvents.EmitLapCompleted()
+
 func _on_speed_up() -> void:
 	if !tripped_timer.is_stopped():
 		return  # Ignore speed up if tripped

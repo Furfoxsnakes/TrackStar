@@ -9,6 +9,7 @@ signal LeveledUp()
 signal PowerupCollected(powerup: Powerup)
 signal PauseGame()
 signal ResumeGame()
+signal LapCompleted()
 
 func EmitSpeedUp() -> void:
     emit_signal("SpeedUp")
@@ -36,3 +37,6 @@ func EmitPauseGame() -> void:
 
 func EmitResumeGame() -> void:
     emit_signal("ResumeGame")
+
+func EmitLapCompleted() -> void:
+    emit_signal("LapCompleted")

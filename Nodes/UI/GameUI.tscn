@@ -6,10 +6,10 @@
 script = ExtResource("1_arrpt")
 speed_up_button = NodePath("HBoxContainer/SpeedUpButton")
 slow_down_button = NodePath("HBoxContainer/SlowDownButton")
-garbage_collected_progress_bar = NodePath("CenterContainer/HBoxContainer/HBoxContainer/ProgressBar")
-garbage_capacity_label = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Label")
-experience_progress_bar = NodePath("CenterContainer/HBoxContainer/HBoxContainer2/ProgressBar")
-experience_label = NodePath("CenterContainer/HBoxContainer/HBoxContainer2/Label")
+garbage_collected_progress_bar = NodePath("CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer/ProgressBar")
+garbage_capacity_label = NodePath("CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer/Label")
+experience_progress_bar = NodePath("CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer2/ProgressBar")
+experience_label = NodePath("CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer2/Label")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 visible = false
@@ -31,31 +31,57 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "CAPACITY (9999/9999)"
 horizontal_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 max_value = 1.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/HBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "XP (9999/9999)"
 horizontal_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer2"]
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 max_value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "LAPS:"
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Runner #1: 999"
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Runner #1: 999"
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Runner #1: 999"
+
+[node name="Label4" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Runner #1: 999"
