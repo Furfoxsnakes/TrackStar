@@ -10,3 +10,7 @@ enum Type {
 @export var name:String
 @export var description:String
 @export var type:Type
+
+
+func _init(type:Type) -> void:
+    self.type = type

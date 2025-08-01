@@ -5,6 +5,8 @@ signal SlowDown()
 signal GarbageCollected()
 signal GarbageDroppedInHole()
 signal ExperienceGained()
+signal LeveledUp()
+signal Powerupollected(powerup: Powerup)
 
 func EmitSpeedUp() -> void:
     emit_signal("SpeedUp")
@@ -20,3 +22,9 @@ func EmitGarbageDroppedInHole() -> void:
 
 func EmitExperienceGained() -> void:
     emit_signal("ExperienceGained")
+
+func EmitLeveledUp() -> void:
+    emit_signal("LeveledUp")
+
+func EmitPowerupCollected(powerup: Powerup) -> void:
+    emit_signal("Powerupollected", powerup)

@@ -5,12 +5,19 @@ extends CharacterBody2D
 @export var collision_area:Area2D
 var movement:Vector2 = Vector2.ZERO
 
+var garbage_capacity:float = 0
+var garbage_collected:float = 0
+var garbage_is_full:bool: 
+	get:
+		return garbage_collected == garbage_capacity
+
+
 func _ready() -> void:
 	collision_area.area_entered.connect(_on_area_entered)
 
 func _process(_delta: float) -> void:
 	movement = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = movement.normalized() * move_speed * get_movement_speed_bonus()
+	velocity = movement.normalized() * move_speed * PowerupManager.get_bonus_speed()
 	move_and_slide()
 
 func _on_area_entered(area: Area2D) -> void:
@@ -22,12 +29,3 @@ func _on_area_entered(area: Area2D) -> void:
 		GameEvents.EmitGarbageCollected()
 		area.queue_free()
 
-
-func get_movement_speed_bonus() -> float:
-	var speed_bonus_multiplier = 1.0
-
-	for powerup in PowerupManager.powerups:
-		if powerup.type == Powerup.Type.Speed:
-			speed_bonus_multiplier += 0.15
-
-	return speed_bonus_multiplier
