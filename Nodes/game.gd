@@ -1,14 +1,12 @@
 class_name Game
 extends Node
 
-static var Instance:Game
-
-@export var Roomba:Roomba
-@export var GarbageHole:GarbageHole
-
 func _ready() -> void:
-	if Instance:
-		push_error("Game instance already exists!")
-		return
-	else:
-		Instance = self
+	GameEvents.PauseGame.connect(_on_pause_game)
+	GameEvents.ResumeGame.connect(_on_resume_game)
+
+func _on_pause_game() -> void:
+	set_process(false)
+
+func _on_resume_game() -> void:
+	set_process(true)

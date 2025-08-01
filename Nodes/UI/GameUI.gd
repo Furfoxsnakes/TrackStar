@@ -4,7 +4,9 @@ extends CanvasLayer
 @export var speed_up_button: Button
 @export var slow_down_button: Button
 @export var garbage_collected_progress_bar: ProgressBar
+@export var garbage_capacity_label: Label
 @export var experience_progress_bar: ProgressBar
+@export var experience_label: Label
 
 func _ready() -> void:
 	speed_up_button.pressed.connect(_on_speed_up_pressed)
@@ -12,7 +14,8 @@ func _ready() -> void:
 	GameEvents.GarbageCollected.connect(_on_garbage_collected)
 	GameEvents.GarbageDroppedInHole.connect(_on_garbage_collected)
 	GameEvents.ExperienceGained.connect(_on_experience_gained)
-	_on_garbage_collected()	 # Initialize the progress bar value
+	update_experience_progress_bar()
+	# _on_garbage_collected()	 # Initialize the progress bar value
 
 func _on_speed_up_pressed() -> void:
 	GameEvents.EmitSpeedUp()
@@ -30,7 +33,9 @@ func _on_experience_gained() -> void:
 	update_experience_progress_bar()
 
 func update_garbage_collected_progress_bar() -> void:
-	garbage_collected_progress_bar.value = GameData.garbage_collected / GameData.garbage_capacity
+	garbage_capacity_label.text = str(int(GameData.Roomba.garbage_collected)) + " / " + str(int(GameData.Roomba.garbage_capacity))
+	garbage_collected_progress_bar.value = GameData.Roomba.garbage_collected / GameData.Roomba.garbage_capacity
 
 func update_experience_progress_bar() -> void:
+	experience_label.text = "Lvl "+ str(int(ExperienceManager.current_level)) + ": " + str(int(ExperienceManager.experience)) + " / " + str(int(ExperienceManager.experience_for_next_level))
 	experience_progress_bar.value = ExperienceManager.experience / ExperienceManager.experience_for_next_level

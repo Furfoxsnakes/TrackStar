@@ -7,13 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://dxear30ds3sed" path="res://Nodes/Roomba/roomba.tscn" id="4_wi60h"]
 [ext_resource type="PackedScene" uid="uid://defkbknklnpk5" path="res://Nodes/Track/garbage_hole.tscn" id="5_y4gxr"]
 
-[node name="Game" type="Node" node_paths=PackedStringArray("Roomba", "GarbageHole")]
+[node name="Game" type="Node"]
 script = ExtResource("1_bfc22")
-Roomba = NodePath("Roomba")
-GarbageHole = NodePath("GarbageHole")
 
 [node name="LevelUpUI" parent="." instance=ExtResource("3_deiy4")]
 layer = 10
+visible = false
 
 [node name="GameUI" parent="." instance=ExtResource("2_1sokt")]
 

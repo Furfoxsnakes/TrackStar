@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	point_to_garbage_hole(Game.Instance.GarbageHole)
+	point_to_garbage_hole(GameData.GarbageHole)
 
 
 func point_to_garbage_hole(garbage_hole: Node2D) -> void:

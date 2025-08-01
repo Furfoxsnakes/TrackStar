@@ -7,8 +7,12 @@ font_size = 36
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="LevelUpUI" type="CanvasLayer"]
+[node name="LevelUpUI" type="CanvasLayer" node_paths=PackedStringArray("speed_increse_button", "capacity_increse_button", "cleaning_area_increse_button")]
+process_mode = 3
 script = ExtResource("1_v5ilg")
+speed_increse_button = NodePath("CenterContainer/VBoxContainer/HBoxContainer/Speed Powerup/MarginContainer/VBoxContainer/Button")
+capacity_increse_button = NodePath("CenterContainer/VBoxContainer/HBoxContainer/Capacity Powerup/MarginContainer/VBoxContainer/Button")
+cleaning_area_increse_button = NodePath("CenterContainer/VBoxContainer/HBoxContainer/Cleaning Area Powerup/MarginContainer/VBoxContainer/Button")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

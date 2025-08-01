@@ -6,7 +6,9 @@ signal GarbageCollected()
 signal GarbageDroppedInHole()
 signal ExperienceGained()
 signal LeveledUp()
-signal Powerupollected(powerup: Powerup)
+signal PowerupCollected(powerup: Powerup)
+signal PauseGame()
+signal ResumeGame()
 
 func EmitSpeedUp() -> void:
     emit_signal("SpeedUp")
@@ -27,4 +29,10 @@ func EmitLeveledUp() -> void:
     emit_signal("LeveledUp")
 
 func EmitPowerupCollected(powerup: Powerup) -> void:
-    emit_signal("Powerupollected", powerup)
+    emit_signal("PowerupCollected", powerup)
+
+func EmitPauseGame() -> void:
+    emit_signal("PauseGame")
+
+func EmitResumeGame() -> void:
+    emit_signal("ResumeGame")

@@ -15,11 +15,11 @@ func _ready() -> void:
 
 
 func _on_garbage_dropped_in_hole() -> void:
-	experience = min(experience + GameData.garbage_collected, max_experience)
+	experience = min(experience + GameData.Roomba.garbage_collected, max_experience)
 
 	while experience >= experience_for_next_level:
 		experience -= experience_for_next_level
-		level_up()
+		await level_up()
 
 	GameEvents.EmitExperienceGained()
 
@@ -29,8 +29,11 @@ func get_experience_for_level(level: int) -> float:
 
 func level_up() -> void:
 	current_level = min(current_level + 1, max_level)
-	var powerup = Powerup.new()
-	powerup.type = Powerup.Type.Speed
-	PowerupManager.powerups.append(powerup)
+	GameEvents.EmitLeveledUp()
+	get_tree().paused = true
+	await GameEvents.PowerupCollected
+	# var powerup = Powerup.new(Powerup.Type.Speed)
+	# PowerupManager.powerups.append(powerup)
+	get_tree().paused = false
 	print("Leveled up to level: ", current_level)
 	

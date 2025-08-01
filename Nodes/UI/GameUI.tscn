@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c37kgg4tfpck3" path="res://Nodes/UI/GameUI.gd" id="1_arrpt"]
 
-[node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("speed_up_button", "slow_down_button", "garbage_collected_progress_bar", "experience_progress_bar")]
+[node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("speed_up_button", "slow_down_button", "garbage_collected_progress_bar", "garbage_capacity_label", "experience_progress_bar", "experience_label")]
 script = ExtResource("1_arrpt")
 speed_up_button = NodePath("HBoxContainer/SpeedUpButton")
 slow_down_button = NodePath("HBoxContainer/SlowDownButton")
 garbage_collected_progress_bar = NodePath("CenterContainer/HBoxContainer/HBoxContainer/ProgressBar")
+garbage_capacity_label = NodePath("CenterContainer/HBoxContainer/HBoxContainer/Label")
 experience_progress_bar = NodePath("CenterContainer/HBoxContainer/HBoxContainer2/ProgressBar")
+experience_label = NodePath("CenterContainer/HBoxContainer/HBoxContainer2/Label")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 visible = false
@@ -37,7 +39,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "ROOMBA CAPACITY"
+text = "CAPACITY (9999/9999)"
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer"]
@@ -50,7 +52,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/HBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "XP"
+text = "XP (9999/9999)"
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="CenterContainer/HBoxContainer/HBoxContainer2"]
